@@ -14,14 +14,8 @@ def checkout(skus):
 
     # reject any lower case chars
     for i in sku_list:
-        if i.islower():
+        if i not in VALID_SKUS:
             return -1
-    
-    # remove any blank entries
-    sku_list = [i for i in sku_list if i.strip() != ""]
-
-    # validate skus
-    sku_list = [i.upper() for i in sku_list if i.upper() in VALID_SKUS]
 
     # count skus
     sku_data = dict(A=0, B=0, C=0, D=0)
@@ -57,4 +51,5 @@ def checkout(skus):
     
 
     
+
 
