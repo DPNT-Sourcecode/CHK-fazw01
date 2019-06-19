@@ -27,14 +27,14 @@ def checkout(skus):
     total += sku_data["C"] * 20
     total += sku_data["D"] * 15
 
-    if sku_data["A"] / 3 > 1:
+    if sku_data["A"] / 3 >= 1:
         a_bundles = math.floor(sku_data["A"]/3)
         total += a_bundles * 130
         total += (sku_data["A"] % 3) * 50
     else:
         total += sku_data["A"] * 50
 
-    if sku_data["B"] / 2 > 1:
+    if sku_data["B"] / 2 >= 1:
         a_bundles = math.floor(sku_data["B"]/2)
         total += a_bundles * 45
         total += (sku_data["B"] % 2) * 30

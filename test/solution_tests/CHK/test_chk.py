@@ -10,3 +10,7 @@ class TestCheckout():
 
     def test_bundle(self):
         assert checkout_solution.checkout("BB") == 45
+        assert checkout_solution.checkout("AAABBC") == 195
+        
+    def test_empty_string(self):
+        assert checkout_solution.checkout("") == 0
