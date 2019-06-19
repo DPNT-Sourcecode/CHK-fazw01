@@ -11,6 +11,11 @@ def checkout(skus):
 
     # sort the skus, convert to list
     sku_list = sorted(skus)
+
+    # reject any lower case chars
+    for i in sku_list:
+        if i.islower():
+            return -1
     
     # remove any blank entries
     sku_list = [i for i in sku_list if i.strip() != ""]
@@ -52,3 +57,4 @@ def checkout(skus):
     
 
     
+
