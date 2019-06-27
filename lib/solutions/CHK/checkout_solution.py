@@ -114,8 +114,7 @@ def group_deal(sku_data):
     total = 0
     price_list = []
 
-    for item in GROUP_DEAL:
-        price_list.append(sku_data[item])
+    price_list = [sku_data[item] for item in GROUP_DEAL if sku_data[item] > 0]
 
     if not price_list:
         return 0
