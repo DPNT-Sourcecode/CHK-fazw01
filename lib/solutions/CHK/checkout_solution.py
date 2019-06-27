@@ -32,7 +32,6 @@ def checkout(skus):
         total += a_bundles * 200
         if sku_data["A"] % 5 >= 3:
             mod = sku_data["A"] % 5
-            import pdb;pdb.set_trace()
             total += 130
             total += 50 * (mod - 3)
         else:
@@ -83,3 +82,4 @@ def checkout(skus):
     
 
     
+
