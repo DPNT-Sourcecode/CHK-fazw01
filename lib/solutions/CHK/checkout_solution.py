@@ -79,7 +79,7 @@ def checkout(skus):
     if sku_data["F"] / 3 >= 1:
         f_bundles = math.floor(sku_data["F"]/3)
         total += f_bundles * 20
-        total += (sku_data["F"] % 2) * 10
+        total += (sku_data["F"] % 3) * 10
     else:
         total += sku_data["F"] * 10
 
@@ -94,3 +94,4 @@ def checkout(skus):
     
 
     
+
