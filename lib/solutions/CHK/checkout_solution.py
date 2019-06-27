@@ -17,11 +17,17 @@ def calculate_sku(sku_data, key):
         return 0
 
     offer = OFFERS[key]
-    if offer[3] is not None:
-        # relies on something else, skip
-        return 0
-
     CALCULATED_SKUS.append(key)
+
+    if isinstance(offer[1][1], str):
+        total = 0
+        if sku_data[key] / (offer[1][0] + 1) >= 1:
+            f_bundles = math.floor(sku_data[key]/(offer[1][0]+1))
+            total += f_bundles * (offer[0] * offer[1][0])
+            total += (sku_data[key] % (offer[1][0]+1)) * offer[0]
+        else:
+            total += sku_data[key] * offer[0]
+        return total
     if offer[1] is None:
         return sku_data[key] * offer[0]
     else:
@@ -105,12 +111,13 @@ def checkout(skus):
         if free_b > 0 and sku_data["B"] >= free_b:
             total -= (free_b * 30)
 
-    if sku_data["F"] / 3 >= 1:
-        f_bundles = math.floor(sku_data["F"]/3)
-        total += f_bundles * 20
-        total += (sku_data["F"] % 3) * 10
-    else:
-        total += sku_data["F"] * 10
+    #if sku_data["F"] / 3 >= 1:
+    #    f_bundles = math.floor(sku_data["F"]/3)
+    #    total += f_bundles * 20
+    #    total += (sku_data["F"] % 3) * 10
+    #else:
+    #    total += sku_data["F"] * 10
+    total += calculate_sku(sku_data, "F")
 
     return total
 
@@ -123,4 +130,5 @@ def checkout(skus):
     
 
     
+
 
