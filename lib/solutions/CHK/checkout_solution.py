@@ -56,7 +56,11 @@ def checkout(skus):
         bundle_total = 0
         bundle_total += a_bundles * 45
         bundle_total += (sku_data["B"] % 2) * 30
-        bundle_total -= (30 * free_b)
+        bundle_mod = sku_data["B"] % 2
+        if free_b > bundle_mod:
+            bundle_total -= 30 * bundle_mod
+        else:
+            bundle_total -= 30 * free_b
 
         paid_for_b = sku_data["B"] - free_b
         if paid_for_b < 0:
