@@ -40,3 +40,9 @@ class TestCheckout():
 
     def test_g(self):
         assert checkout_solution.checkout("GG") == 40
+
+    def test_h(self):
+        assert checkout_solution.checkout("HHHHH") == 45
+        assert checkout_solution.checkout("HHHHHHHHHH") == 80
+        assert checkout_solution.checkout("HHHHHHHHHHHHHHH") == 125
+        assert checkout_solution.checkout("HHHHHHHHHHHHHHHH") == 135
