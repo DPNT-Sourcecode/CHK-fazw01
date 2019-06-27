@@ -2,6 +2,7 @@ import math
 import string
 
 VALID_SKUS = list(string.ascii_uppercase)
+CALCULATED_SKUS = []
 
 OFFERS = {
     "A": [50, [(5, 200), (3, 130)], None],
@@ -12,6 +13,10 @@ OFFERS = {
 }
 
 def calculate_sku(sku_data, key):
+    if key in CALCULATED_SKUS:
+        return 0
+
+    CALCULATED_SKUS.append(key)
     offer = OFFERS[key]
     if offer[1] is None and offer[2] is None:
         return sku_data[key] * offer[0]
@@ -116,6 +121,7 @@ def checkout(skus):
     
 
     
+
 
 
 
