@@ -3,12 +3,17 @@ import math
 VALID_SKUS = ["A", "B", "C", "D", "E", "F"]
 
 OFFERS = {
-    "A": [50, [(5, 200), (3, 130)]]
+    "A": [50, [(5, 200), (3, 130)]],
+    "C": [20, None],
+    "D": [15, None]
 }
 
 def calculate_sku(sku_data, key):
     total = 0
     offer = OFFERS[key]
+    if offer[1] is None:
+        return sku_data[key] * offer[0]
+
     offer1 = offer[1][0]
     offer2 = offer[1][1]
     if sku_data[key] / offer1[0] >= 1:
@@ -54,22 +59,22 @@ def checkout(skus):
     total += sku_data["D"] * 15
     total += sku_data["E"] * 40
 
-    if sku_data["A"] / 5 >= 1:
-        a_bundles = math.floor(sku_data["A"]/5)
-        total += a_bundles * 200
-        if sku_data["A"] % 5 >= 3:
-            mod = sku_data["A"] % 5
-            total += 130
-            total += 50 * (mod - 3)
-        else:
-            total += (sku_data["A"] % 5) * 50
-    elif sku_data["A"] / 3 >= 1:
-        a_bundles = math.floor(sku_data["A"]/3)
-        total += a_bundles * 130
-        total += (sku_data["A"] % 3) * 50
-    else:
-        total += sku_data["A"] * 50
-
+    #if sku_data["A"] / 5 >= 1:
+    #    a_bundles = math.floor(sku_data["A"]/5)
+    #    total += a_bundles * 200
+    #    if sku_data["A"] % 5 >= 3:
+    #        mod = sku_data["A"] % 5
+    #        total += 130
+    #        total += 50 * (mod - 3)
+    #    else:
+    #        total += (sku_data["A"] % 5) * 50
+    #elif sku_data["A"] / 3 >= 1:
+    #    a_bundles = math.floor(sku_data["A"]/3)
+    #    total += a_bundles * 130
+    #    total += (sku_data["A"] % 3) * 50
+    #else:
+    #    total += sku_data["A"] * 50
+    total += calculate_sku(sku_data, "A")
     free_b = 0
 
     if sku_data["E"] / 2 >= 1:
@@ -121,6 +126,7 @@ def checkout(skus):
     
 
     
+
 
 
 
