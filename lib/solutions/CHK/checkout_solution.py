@@ -41,7 +41,10 @@ def calculate_sku(sku_data, key):
     else:
         total = 0
         offer1 = offer[1][0]
-        offer2 = offer[1][1]
+        try:
+            offer2 = offer[1][1]
+        except IndexError:
+            offer2 = [10000000]
         if sku_data[key] / offer1[0] >= 1:
             a_bundles = math.floor(sku_data[key]/offer1[0])
             total += a_bundles * offer1[1]
@@ -129,4 +132,5 @@ def checkout(skus):
     
 
     
+
 
