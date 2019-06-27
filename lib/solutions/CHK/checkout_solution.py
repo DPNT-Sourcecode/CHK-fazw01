@@ -18,7 +18,16 @@ OFFERS = {
     "L": [90, None],
     "N": [40, None],
     "O": [10, None],
-    "P": [50, [(5, 200)]]
+    "P": [50, [(5, 200)]],
+    "R": [50, None],
+    "S": [30, None],
+    "T": [20, None],
+    "U": [40, [(3, "U")]],
+    "V": [50, [(3, 130), (2, 90)]],
+    "W": [20, None],
+    "X": [90, None],
+    "Y": [10, None],
+    "Z": [50, None]
 }
 
 def calculate_sku(sku_data, key):
@@ -132,3 +141,4 @@ def checkout(skus):
     
 
     
+
