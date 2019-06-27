@@ -35,3 +35,5 @@ class TestCheckout():
     def test_f_bundle(self):
         assert checkout_solution.checkout("FFF") == 20
         assert checkout_solution.checkout("FF") == 20
+        assert checkout_solution.checkout("FFFF") == 30
+        assert checkout_solution.checkout("FFFFFF") == 40

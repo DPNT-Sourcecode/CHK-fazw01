@@ -76,8 +76,10 @@ def checkout(skus):
         if free_b > 0 and sku_data["B"] >= free_b:
             total -= (free_b * 30)
 
-    if sku_data["F"] == 3:
-        total += 20
+    if sku_data["F"] / 3 >= 1:
+        f_bundles = math.floor(sku_data["F"]/3)
+        total += f_bundles * 20
+        total += (sku_data["F"] % 2) * 10
     else:
         total += sku_data["F"] * 10
 
@@ -92,4 +94,3 @@ def checkout(skus):
     
 
     
-
