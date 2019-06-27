@@ -20,8 +20,11 @@ class TestCheckout():
 
     def test_compare_offers(self):
         assert checkout_solution.checkout("BBEE") == 110
+        assert checkout_solution.checkout("EE") == 80
 
     def test_a_bundle(self):
         assert checkout_solution.checkout("AAAAA") == 200
         assert checkout_solution.checkout("AAAAAA") == 250
         assert checkout_solution.checkout("AAAAAAA") == 300
+        assert checkout_solution.checkout("AAAAAAAA") == 330
+        assert checkout_solution.checkout("AAAAAAAAA") == 380

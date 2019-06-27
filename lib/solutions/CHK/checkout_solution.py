@@ -30,7 +30,12 @@ def checkout(skus):
     if sku_data["A"] / 5 >= 1:
         a_bundles = math.floor(sku_data["A"]/5)
         total += a_bundles * 200
-        total += (sku_data["A"] % 5) * 50
+        if sku_data["A"] % 5 >= 3:
+            mod = sku_data["A"] % 5
+            total += 130
+            total += 130 * (mod - 3)
+        else:
+            total += (sku_data["A"] % 5) * 50
     elif sku_data["A"] / 3 >= 1:
         a_bundles = math.floor(sku_data["A"]/3)
         total += a_bundles * 130
@@ -63,7 +68,7 @@ def checkout(skus):
             total += free_total
     else:
         total += sku_data["B"] * 30
-        if free_b > 0:
+        if free_b > 0 and sku_data["B"] >= free_b:
             total -= (free_b * 30)
 
     return total
