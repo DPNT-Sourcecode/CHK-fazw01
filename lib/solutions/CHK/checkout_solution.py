@@ -1,6 +1,6 @@
 import math
 
-VALID_SKUS = ["A", "B", "C", "D"]
+VALID_SKUS = ["A", "B", "C", "D", "E"]
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -51,3 +51,4 @@ def checkout(skus):
     
 
     
+
