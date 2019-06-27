@@ -18,8 +18,9 @@ def calculate_sku(sku_data, key):
 
     offer = OFFERS[key]
     CALCULATED_SKUS.append(key)
-
-    if isinstance(offer[1][1], str):
+    
+    if offer[1] is not None and isinstance(offer[1][0][1], str):
+        import pdb;pdb.set_trace()
         total = 0
         if sku_data[key] / (offer[1][0] + 1) >= 1:
             f_bundles = math.floor(sku_data[key]/(offer[1][0]+1))
@@ -130,5 +131,6 @@ def checkout(skus):
     
 
     
+
 
 
