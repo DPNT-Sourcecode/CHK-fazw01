@@ -137,7 +137,7 @@ def checkout(skus):
     for sku in STANDARD_SKUS:
         total += calculate_sku(sku_data, sku)
 
-    free_b = 0
+    """free_b = 0
 
     if sku_data["E"] / 2 >= 1:
         # for every 2 E we get a free B
@@ -169,7 +169,9 @@ def checkout(skus):
         total += sku_data["B"] * 30
         if free_b > 0 and sku_data["B"] >= free_b:
             total -= (free_b * 30)
-
+    """
+    total += special_case(sku_data, "E", 2, "B", 30, (2, 45))
+    total += special_case(sku_data, "N", 3, "M", 15, None)
 
     return total
 
