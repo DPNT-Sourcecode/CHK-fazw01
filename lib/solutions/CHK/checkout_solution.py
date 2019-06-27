@@ -177,9 +177,3 @@ def checkout(skus):
     
 
     
-
-
-
-
-
-
