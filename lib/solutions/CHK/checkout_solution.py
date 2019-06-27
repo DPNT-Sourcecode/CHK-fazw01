@@ -6,22 +6,23 @@ CALCULATED_SKUS = []
 
 OFFERS = {
     "A": [50, [(5, 200), (3, 130)], None, None],
-    "B": [30, [(2, 45)], None, "E"],
     "C": [20, None, None, None],
     "D": [15, None, None, None],
-    "E": [40, None, (2, "B"), None]
+    "E": [40, None, None, None]
 }
 
 def calculate_sku(sku_data, key):
     if key in CALCULATED_SKUS:
         return 0
 
-    CALCULATED_SKUS.append(key)
     offer = OFFERS[key]
+    if offer[3] is not None:
+        # relies on something else, skip
+        return 0
+
+    CALCULATED_SKUS.append(key)
     if offer[1] is None and offer[2] is None:
         return sku_data[key] * offer[0]
-    elif offer[1] is None and offer[2] is not None:
-
     else:
         total = 0
         offer1 = offer[1][0]
@@ -121,12 +122,3 @@ def checkout(skus):
     
 
     
-
-
-
-
-
-
-
-
-
