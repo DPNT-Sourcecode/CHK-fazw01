@@ -120,9 +120,10 @@ def group_deal(sku_data):
         return 0
 
     if len(price_list) >= 3:
+        import pdb;pdb.set_trace()
         deals = math.floor(len(price_list) / 3)
         total += deals * 45
-        total += sum(price_list[deals:])
+        total += sum(price_list[int(deals):])
         return total
     elif len(price_list) < 3:
         return sum(price_list)
@@ -168,6 +169,7 @@ def checkout(skus):
     
 
     
+
 
 
 
