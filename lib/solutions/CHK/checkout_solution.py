@@ -5,11 +5,11 @@ VALID_SKUS = list(string.ascii_uppercase)
 CALCULATED_SKUS = []
 
 OFFERS = {
-    "A": [50, [(5, 200), (3, 130)], None],
-    "B": [30, [(2, 45)], None],
-    "C": [20, None, None],
-    "D": [15, None, None],
-    "E": [40, None, (2, "B")]
+    "A": [50, [(5, 200), (3, 130)], None, None],
+    "B": [30, [(2, 45)], None, "E"],
+    "C": [20, None, None, None],
+    "D": [15, None, None, None],
+    "E": [40, None, (2, "B"), None]
 }
 
 def calculate_sku(sku_data, key):
@@ -121,6 +121,7 @@ def checkout(skus):
     
 
     
+
 
 
 
