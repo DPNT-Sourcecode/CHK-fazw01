@@ -55,8 +55,8 @@ def checkout(skus):
         sku_data[sku] += 1
 
     total = 0
-    total += sku_data["C"] * 20
-    total += sku_data["D"] * 15
+    total += calculate_sku(sku_data, "C")
+    total += calculate_sku(sku_data, "D")
     total += sku_data["E"] * 40
 
     #if sku_data["A"] / 5 >= 1:
@@ -126,6 +126,7 @@ def checkout(skus):
     
 
     
+
 
 
 
