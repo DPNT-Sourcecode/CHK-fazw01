@@ -111,16 +111,18 @@ def special_case(sku_data, free_trigger, trigger_amount, free_sku, free_sku_valu
 
 
 def group_deal(sku_data):
-    total_group_count = 0
     total = 0
+    price_list = []
 
     for item in GROUP_DEAL:
-        total_group_count += sku_data[item]
+        price_list.append(sku_data[item])
 
-    if total_group_count / 3 >= 1:
-        deals = math.floor(total_group_count / 3)
+    if not price_list:
+        return 0
+
+    if len(price_list) % 3 == 0:
+        deals = math.floor(len(price_list) / 3)
         total += deals * 45
-        remain = total_group_count % 3
         
 
 # noinspection PyUnusedLocal
@@ -163,6 +165,7 @@ def checkout(skus):
     
 
     
+
 
 
 
