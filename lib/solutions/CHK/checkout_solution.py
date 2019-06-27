@@ -1,6 +1,6 @@
 import math
 
-VALID_SKUS = ["A", "B", "C", "D", "E"]
+VALID_SKUS = ["A", "B", "C", "D", "E", "F"]
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -18,7 +18,7 @@ def checkout(skus):
             return -1
 
     # count skus
-    sku_data = dict(A=0, B=0, C=0, D=0, E=0)
+    sku_data = dict(A=0, B=0, C=0, D=0, E=0, F=0)
     for sku in sku_list:
         sku_data[sku] += 1
 
@@ -75,6 +75,11 @@ def checkout(skus):
         total += sku_data["B"] * 30
         if free_b > 0 and sku_data["B"] >= free_b:
             total -= (free_b * 30)
+
+    if sku_data["F"] == 3:
+        total += 20
+    else:
+        total += sku_data["F"] * 10
 
     return total
 

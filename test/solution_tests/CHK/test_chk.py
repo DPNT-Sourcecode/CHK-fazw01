@@ -31,3 +31,7 @@ class TestCheckout():
         assert checkout_solution.checkout("AAAAAAAAA") == 380
         assert checkout_solution.checkout("AAAAAEEBAAABB") == 455
         assert checkout_solution.checkout("ABCDECBAABCABBAAAEEAA") == 665
+
+    def test_f_bundle(self):
+        assert checkout_solution.checkout("FFF") == 20
+        assert checkout_solution.checkout("FF") == 20
