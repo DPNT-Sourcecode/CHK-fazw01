@@ -57,3 +57,4 @@ class TestCheckout():
 
     def test_group(self):
         assert checkout_solution.checkout("STX") == 45
+        assert checkout_solution.checkout("ST") == 40

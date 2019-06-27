@@ -113,17 +113,25 @@ def special_case(sku_data, free_trigger, trigger_amount, free_sku, free_sku_valu
 def group_deal(sku_data):
     total = 0
     price_list = []
+    prices = {
+        "S": 20,
+        "T": 20,
+        "X": 17,
+        "Y": 20,
+        "Z": 21
+    }
 
-    price_list = [sku_data[item] for item in GROUP_DEAL if sku_data[item] > 0]
+    for item in GROUP_DEAL:
+        if sku_data[item] > 0:
+            price_list.extend([prices[item]] * sku_data[item])
 
     if not price_list:
         return 0
 
     if len(price_list) >= 3:
-        import pdb;pdb.set_trace()
         deals = math.floor(len(price_list) / 3)
         total += deals * 45
-        total += sum(price_list[int(deals):])
+        total += sum(price_list[int(deals)*3:])
         return total
     elif len(price_list) < 3:
         return sum(price_list)
