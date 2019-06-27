@@ -9,23 +9,25 @@ OFFERS = {
 def calculate_sku(sku_data, key):
     total = 0
     offer = OFFERS[key]
-    multiple1 = offer[1][0][0]
-    multiple2 = offer[1][2][0]
-    if sku_data[key] / multiple1 >= 1:
-        a_bundles = math.floor(sku_data[key]/multiple1)
-        total += a_bundles * 200
-        if sku_data["A"] % 5 >= 3:
-            mod = sku_data["A"] % 5
-            total += 130
-            total += 50 * (mod - 3)
+    offer1 = offer[1][0]
+    offer2 = offer[1][1]
+    if sku_data[key] / offer1[0] >= 1:
+        a_bundles = math.floor(sku_data[key]/offer1[0])
+        total += a_bundles * offer1[1]
+        if sku_data[key] % offer1[0] >= offer2[0]:
+            mod = sku_data[key] % offer1[0]
+            total += offer2[1]
+            total += offer[0] * (mod - offer2[0])
         else:
-            total += (sku_data["A"] % 5) * 50
-    elif sku_data["A"] / 3 >= 1:
-        a_bundles = math.floor(sku_data["A"]/3)
-        total += a_bundles * 130
-        total += (sku_data["A"] % 3) * 50
+            total += (sku_data[key] % offer1[0]) * offer[0]
+    elif sku_data[key] / offer2[0] >= 1:
+        a_bundles = math.floor(sku_data[key]/offer2[0])
+        total += a_bundles * offer2[1]
+        total += (sku_data[key] % offer2[0]) * offer[0]
     else:
-        total += sku_data["A"] * 50
+        total += sku_data[key] * offer[0]
+
+    return total
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -119,5 +121,6 @@ def checkout(skus):
     
 
     
+
 
 
