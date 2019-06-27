@@ -6,10 +6,13 @@ OFFERS = {
     "A": [50, [(5, 200), (3, 130)]]
 }
 
-def calculate_sku(key):
+def calculate_sku(sku_data, key):
+    total = 0
     offer = OFFERS[key]
-    if sku_data[key] / 5 >= 1:
-        a_bundles = math.floor(sku_data["A"]/5)
+    multiple1 = offer[1][0][0]
+    multiple2 = offer[1][2][0]
+    if sku_data[key] / multiple1 >= 1:
+        a_bundles = math.floor(sku_data[key]/multiple1)
         total += a_bundles * 200
         if sku_data["A"] % 5 >= 3:
             mod = sku_data["A"] % 5
@@ -116,4 +119,5 @@ def checkout(skus):
     
 
     
+
 
