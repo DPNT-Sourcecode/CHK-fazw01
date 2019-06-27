@@ -17,3 +17,6 @@ class TestCheckout():
 
     def test_free_b(self):
         assert checkout_solution.checkout("BEE") == 80
+
+    def test_compare_offers(self):
+        assert checkout_solution.checkout("BBEE") == 110
