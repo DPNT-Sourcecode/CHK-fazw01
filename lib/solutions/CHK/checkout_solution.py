@@ -5,10 +5,11 @@ VALID_SKUS = list(string.ascii_uppercase)
 CALCULATED_SKUS = []
 
 OFFERS = {
-    "A": [50, [(5, 200), (3, 130)], None, None],
-    "C": [20, None, None, None],
-    "D": [15, None, None, None],
-    "E": [40, None, None, None]
+    "A": [50, [(5, 200), (3, 130)]],
+    "C": [20, None],
+    "D": [15, None],
+    "E": [40, None],
+    "F": [10, [(2, "F")]]
 }
 
 def calculate_sku(sku_data, key):
@@ -21,7 +22,7 @@ def calculate_sku(sku_data, key):
         return 0
 
     CALCULATED_SKUS.append(key)
-    if offer[1] is None and offer[2] is None:
+    if offer[1] is None:
         return sku_data[key] * offer[0]
     else:
         total = 0
@@ -122,3 +123,4 @@ def checkout(skus):
     
 
     
+
