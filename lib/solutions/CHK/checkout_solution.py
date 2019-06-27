@@ -72,6 +72,44 @@ def calculate_sku(sku_data, key):
 
         return total
 
+def special_case(sku_data, free_trigger, trigger_amount, free_sku, free_sku_value, free_deal=None):
+    """free_deal can be tuple of amount and value"""
+    free_items = 0
+
+    if sku_data[free_trigger] / trigger_amount >= 1:
+        # for every <trigger_amount> of <free_trigger> we get a free <free_sku>
+        # how many free items are we eligible for
+        free_b = math.floor(sku_data[free_trigger]/trigger_amount)
+
+
+    if free_deal and sku_data[free_sku] / free_deal[0] >= 1:
+        deal_amount = free_deal[0]
+        deal_value = free_deal[1]
+        # calculate which deal is best
+        a_bundles = math.floor(sku_data[free_sku]/deal_amount)
+        bundle_total = 0
+        bundle_total += a_bundles * deal_value
+        bundle_total += (sku_data[free_sku] % deal_amount) * free_sku_value
+        bundle_mod = sku_data[free_sku] % deal_amount
+        if free_items > bundle_mod:
+            bundle_total -= free_sku_value * bundle_mod
+        else:
+            bundle_total -= free_sku_value * free_items
+
+        paid_for_b = sku_data[free_sku] - free_items
+        if paid_for_b < 0:
+            paid_for_b = 0
+        free_total = paid_for_b * 30
+
+        if bundle_total < free_total:
+            total += bundle_total
+        else:
+            total += free_total
+    else:
+        total += sku_data["B"] * 30
+        if free_b > 0 and sku_data["B"] >= free_b:
+            total -= (free_b * 30)
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -141,4 +179,5 @@ def checkout(skus):
     
 
     
+
 
