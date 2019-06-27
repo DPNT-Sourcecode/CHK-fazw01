@@ -51,5 +51,3 @@ def checkout(skus):
     
 
     
-
-
