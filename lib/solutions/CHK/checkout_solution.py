@@ -3,7 +3,7 @@ import string
 
 VALID_SKUS = list(string.ascii_uppercase)
 STANDARD_SKUS = sorted(list(set(VALID_SKUS) - set(["B", "M", "Q", "S", "T", "X", "Y", "Z"])))
-GROUP_DEAL = ["S", "T", "X", "Y", "Z"]
+GROUP_DEAL = ["Z", "Y", "S", "T", "X"]
 
 OFFERS = {
     "A": [50, [(5, 200), (3, 130)]],
@@ -111,7 +111,17 @@ def special_case(sku_data, free_trigger, trigger_amount, free_sku, free_sku_valu
 
 
 def group_deal(sku_data):
+    total_group_count = 0
+    total = 0
 
+    for item in GROUP_DEAL:
+        total_group_count += sku_data[item]
+
+    if total_group_count / 3 >= 1:
+        deals = math.floor(total_group_count / 3)
+        total += deals * 45
+        remain = total_group_count % 3
+        
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -153,5 +163,6 @@ def checkout(skus):
     
 
     
+
 
 
