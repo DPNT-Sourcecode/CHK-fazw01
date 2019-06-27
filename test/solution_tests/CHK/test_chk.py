@@ -24,3 +24,4 @@ class TestCheckout():
     def test_a_bundle(self):
         assert checkout_solution.checkout("AAAAA") == 200
         assert checkout_solution.checkout("AAAAAA") == 250
+        assert checkout_solution.checkout("AAAAAAA") == 300
