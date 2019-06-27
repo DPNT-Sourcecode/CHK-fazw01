@@ -69,7 +69,7 @@ def checkout(skus):
             return -1
 
     # count skus
-    sku_data = dict(A=0, B=0, C=0, D=0, E=0, F=0)
+    sku_data = {sku: 0 for sku in VALID_SKUS}
     for sku in sku_list:
         sku_data[sku] += 1
 
@@ -78,6 +78,8 @@ def checkout(skus):
     total += calculate_sku(sku_data, "C")
     total += calculate_sku(sku_data, "D")
     total += calculate_sku(sku_data, "F")
+    total += calculate_sku(sku_data, "G")
+    total += calculate_sku(sku_data, "H")
 
     total += sku_data["E"] * 40
 
