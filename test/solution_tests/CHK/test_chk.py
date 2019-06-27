@@ -14,3 +14,6 @@ class TestCheckout():
         
     def test_empty_string(self):
         assert checkout_solution.checkout("") == 0
+
+    def test_free_b(self):
+        assert checkout_solution.checkout("BEE") == 80

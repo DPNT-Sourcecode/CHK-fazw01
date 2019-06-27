@@ -18,13 +18,14 @@ def checkout(skus):
             return -1
 
     # count skus
-    sku_data = dict(A=0, B=0, C=0, D=0)
+    sku_data = dict(A=0, B=0, C=0, D=0, E=0)
     for sku in sku_list:
         sku_data[sku] += 1
 
     total = 0
     total += sku_data["C"] * 20
     total += sku_data["D"] * 15
+    total += sku_data["E"] * 40
 
     if sku_data["A"] / 3 >= 1:
         a_bundles = math.floor(sku_data["A"]/3)
@@ -33,12 +34,33 @@ def checkout(skus):
     else:
         total += sku_data["A"] * 50
 
+    free_b = 0
+
+    if sku_data["E"] / 2 >= 1:
+        # for every 2 E we get a free B
+        # how many free B are we eligible for
+        free_b = math.floor(sku_data["E"]/2)
+
     if sku_data["B"] / 2 >= 1:
+        # calculate which deal is best, 2 for 45, or a free B
         a_bundles = math.floor(sku_data["B"]/2)
-        total += a_bundles * 45
-        total += (sku_data["B"] % 2) * 30
+        bundle_total = 0
+        bundle_total += a_bundles * 45
+        bundle_total += (sku_data["B"] % 2) * 30
+
+        paid_for_b = sku_data["B"] - free_b
+        if paid_for_b < 0:
+            paid_for_b = 0
+        free_total = paid_for_b * 30
+
+        if bundle_total < free_total:
+            total += bundle_total
+        else:
+            total += free_total
     else:
         total += sku_data["B"] * 30
+        if free_b > 0:
+            total -= (free_b * 30)
 
     return total
 
