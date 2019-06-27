@@ -120,9 +120,13 @@ def group_deal(sku_data):
     if not price_list:
         return 0
 
-    if len(price_list) % 3 == 0:
+    if len(price_list) >= 3:
         deals = math.floor(len(price_list) / 3)
         total += deals * 45
+        total += sum(price_list[deals:])
+        return total
+    elif len(price_list) < 3:
+        return sum(price_list)
         
 
 # noinspection PyUnusedLocal
@@ -165,6 +169,7 @@ def checkout(skus):
     
 
     
+
 
 
 
