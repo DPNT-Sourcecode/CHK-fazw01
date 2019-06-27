@@ -172,6 +172,7 @@ def checkout(skus):
     """
     total += special_case(sku_data, "E", 2, "B", 30, (2, 45))
     total += special_case(sku_data, "N", 3, "M", 15, None)
+    total += special_case(sku_data, "R", 3, "Q", 30, (3, 80))
 
     return total
 
