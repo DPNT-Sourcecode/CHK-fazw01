@@ -53,4 +53,4 @@ class TestCheckout():
 
     def test_r(self):
         assert checkout_solution.checkout("RRRQ") == 150
-        assert checkout_solution.checkout("RRRQQQ") == 230 
+        assert checkout_solution.checkout("RRRQQQ") == 210 

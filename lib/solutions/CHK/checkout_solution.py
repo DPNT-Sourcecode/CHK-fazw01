@@ -137,39 +137,6 @@ def checkout(skus):
     for sku in STANDARD_SKUS:
         total += calculate_sku(sku_data, sku)
 
-    """free_b = 0
-
-    if sku_data["E"] / 2 >= 1:
-        # for every 2 E we get a free B
-        # how many free B are we eligible for
-        free_b = math.floor(sku_data["E"]/2)
-
-    if sku_data["B"] / 2 >= 1:
-        # calculate which deal is best, 2 for 45, or a free B
-        a_bundles = math.floor(sku_data["B"]/2)
-        bundle_total = 0
-        bundle_total += a_bundles * 45
-        bundle_total += (sku_data["B"] % 2) * 30
-        bundle_mod = sku_data["B"] % 2
-        if free_b > bundle_mod:
-            bundle_total -= 30 * bundle_mod
-        else:
-            bundle_total -= 30 * free_b
-
-        paid_for_b = sku_data["B"] - free_b
-        if paid_for_b < 0:
-            paid_for_b = 0
-        free_total = paid_for_b * 30
-
-        if bundle_total < free_total:
-            total += bundle_total
-        else:
-            total += free_total
-    else:
-        total += sku_data["B"] * 30
-        if free_b > 0 and sku_data["B"] >= free_b:
-            total -= (free_b * 30)
-    """
     total += special_case(sku_data, "E", 2, "B", 30, (2, 45))
     total += special_case(sku_data, "N", 3, "M", 15, None)
     total += special_case(sku_data, "R", 3, "Q", 30, (3, 80))
