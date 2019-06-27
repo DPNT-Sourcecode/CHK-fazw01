@@ -9,7 +9,9 @@ OFFERS = {
     "C": [20, None],
     "D": [15, None],
     "E": [40, None],
-    "F": [10, [(2, "F")]]
+    "F": [10, [(2, "F")]],
+    "G": [20, None],
+    "H": [10, [(10, 80), (5, 45)]]
 }
 
 def calculate_sku(sku_data, key):
@@ -72,10 +74,12 @@ def checkout(skus):
         sku_data[sku] += 1
 
     total = 0
+    total += calculate_sku(sku_data, "A")
     total += calculate_sku(sku_data, "C")
     total += calculate_sku(sku_data, "D")
+    total += calculate_sku(sku_data, "F")
+
     total += sku_data["E"] * 40
-    total += calculate_sku(sku_data, "A")
 
     free_b = 0
 
@@ -110,13 +114,6 @@ def checkout(skus):
         if free_b > 0 and sku_data["B"] >= free_b:
             total -= (free_b * 30)
 
-    #if sku_data["F"] / 3 >= 1:
-    #    f_bundles = math.floor(sku_data["F"]/3)
-    #    total += f_bundles * 20
-    #    total += (sku_data["F"] % 3) * 10
-    #else:
-    #    total += sku_data["F"] * 10
-    total += calculate_sku(sku_data, "F")
 
     return total
 
@@ -129,6 +126,7 @@ def checkout(skus):
     
 
     
+
 
 
 
